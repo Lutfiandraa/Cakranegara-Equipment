@@ -1,7 +1,7 @@
 export default function Rent() {
   return (
     <>
-    <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-10 md:pt-14 pb-14 md:pb-20">
+    <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
       <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
         <p className="text-amber-400 font-semibold tracking-widest uppercase text-sm md:text-base mb-5">
@@ -14,7 +14,7 @@ export default function Rent() {
         />
         <h2 className="font-brand text-2xl md:text-4xl font-bold text-white mb-4">Cakranegara</h2>
         <p className="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-          Tech-powered equipment rental. Expand your fleet, connect your jobsite, reduce downtime.
+          Solusi Rental & Part Alat Berat anda
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
           <a

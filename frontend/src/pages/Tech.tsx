@@ -94,10 +94,10 @@ export default function Tech() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
-      <section className="relative min-h-[65vh] flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden">
+      {/* Hero - same section size as Rent */}
+      <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
-        <div className={`relative z-10 text-center ${sectionClass}`}>
+        <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
           <p className="text-amber-400 font-semibold tracking-widest uppercase text-xs mb-5">
             Powered by Cakranegara Tech
           </p>

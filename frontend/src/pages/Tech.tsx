@@ -1,39 +1,4 @@
 export default function Tech() {
-  const solutions = [
-    {
-      number: '1.0',
-      title: 'Fleet management',
-      description:
-        'Experience the convenience and efficiency of having a fully staffed personal rental yard directly attached to your jobsite.',
-      stat: '20%',
-      statLabel: 'Improvement in jobsite efficiency',
-    },
-    {
-      number: '2.0',
-      title: 'Dash Cams',
-      description:
-        'Get immediate in-cab visual and audio alerts for unsafe driving behaviors, including follow distance and forward-collision warnings.',
-    },
-    {
-      number: '3.0',
-      title: 'Security & Theft Prevention',
-      description:
-        'Monitor asset movement and jobsite entry/exit in real time. Receive instant SMS or email alerts for use outside of business hours.',
-    },
-    {
-      number: '4.0',
-      title: 'Compliance & reporting',
-      description:
-        'Monitor driver behavior with speed and incident tracking. Meet DOT and OSHA inspection needs with confidence.',
-    },
-    {
-      number: '5.0',
-      title: 'Safety & Accountability',
-      description:
-        'Provides visual and audio alerts to drivers and fleet managers for dangerous follow distances, collision warnings and more.',
-    },
-  ];
-
   const products = [
     {
       title: 'Asset Trackers',
@@ -88,7 +53,7 @@ export default function Tech() {
     { name: 'Utilities', description: 'Operational oversight for utility fleets, from bucket trucks to loaders.' },
   ];
 
-  const sectionClass = 'max-w-5xl mx-auto px-4 sm:px-6';
+  const sectionClass = 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8';
   const sectionTitleClass = 'font-brand text-2xl md:text-3xl font-bold text-slate-800';
   const sectionSubtitleClass = 'text-slate-600 mt-2 max-w-2xl';
 
@@ -110,7 +75,7 @@ export default function Tech() {
             Connected software for fleet management, safety, and jobsite visibility.
           </p>
           <a
-            href="#solutions"
+            href="#products"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
           >
             Explore solutions
@@ -121,52 +86,8 @@ export default function Tech() {
         </div>
       </section>
 
-      {/* Solutions */}
-      <section id="solutions" className="py-16 md:py-24 bg-slate-50">
-        <div className={sectionClass}>
-          <header className="text-center mb-12 md:mb-16">
-            <h2 className={sectionTitleClass}>
-              Solutions for every jobsite
-            </h2>
-            <p className={`${sectionSubtitleClass} mx-auto text-center`}>
-              A connected platform to optimize the Cakranegara fleet.
-            </p>
-          </header>
-
-          <ul className="space-y-6 md:space-y-8 list-none p-0 m-0">
-            {solutions.map((item) => (
-              <li key={item.number}>
-                <article className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 md:p-6 rounded-xl bg-white border border-slate-200/80 shadow-sm hover:shadow transition-shadow">
-                  <div className="flex items-baseline gap-3 sm:block sm:w-16 shrink-0">
-                    <span className="font-brand text-3xl md:text-4xl font-bold text-amber-500 tabular-nums">
-                      {item.number}
-                    </span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-2">{item.title}</h3>
-                    <p className="text-slate-600 text-sm md:text-base leading-relaxed">{item.description}</p>
-                    {item.stat && (
-                      <div className="mt-4 inline-flex flex-wrap items-center gap-2 px-3 py-2 bg-amber-50 rounded-lg text-sm">
-                        <span className="font-bold text-amber-600">{item.stat}</span>
-                        <span className="text-slate-600">{item.statLabel}</span>
-                      </div>
-                    )}
-                  </div>
-                </article>
-              </li>
-            ))}
-          </ul>
-          <p className="text-center mt-10">
-            <a href="#products" className="text-amber-600 font-semibold text-sm hover:text-amber-700 inline-flex items-center gap-1">
-              View products
-              <span aria-hidden>→</span>
-            </a>
-          </p>
-        </div>
-      </section>
-
       {/* Products */}
-      <section id="products" className="py-16 md:py-24 bg-white border-t border-slate-100">
+      <section id="products" className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-white border-t border-slate-200">
         <div className={sectionClass}>
           <header className="text-center mb-12 md:mb-16">
             <p className="text-amber-500 font-semibold uppercase tracking-widest text-xs mb-2">
@@ -176,7 +97,6 @@ export default function Tech() {
               Powered by <span className="text-amber-500">Tech</span>
             </h2>
           </header>
-
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
             {products.map((product) => (
               <article
@@ -205,7 +125,7 @@ export default function Tech() {
       </section>
 
       {/* Industries */}
-      <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
+      <section className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-slate-50 border-t border-slate-200">
         <div className={sectionClass}>
           <header className="text-center mb-12 md:mb-16">
             <h2 className={sectionTitleClass}>
@@ -215,8 +135,7 @@ export default function Tech() {
               See how our tech supports every sector.
             </p>
           </header>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {industries.map((ind) => (
               <div
                 key={ind.name}

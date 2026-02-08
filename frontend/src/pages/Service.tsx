@@ -62,7 +62,7 @@ export default function Service() {
             Services.
           </h1>
           <p className="text-slate-300 text-lg md:text-xl mb-8">
-            Cakranegara – Solusi Rental & Part Alat Berat
+            Cakranegara – Solusi Rental dan Penyediaan Equipment Terpercaya
           </p>
           <a
             href="/"

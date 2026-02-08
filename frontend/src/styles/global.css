@@ -10,3 +10,61 @@
     @apply antialiased bg-slate-900 text-slate-100;
   }
 }
+
+/* Smooth animation on first load / reload / landing */
+html.first-load main.page-transition-main {
+  animation: pageEnter 0.5s ease-out forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.first-load main.page-transition-main {
+    animation-duration: 0.15s;
+  }
+}
+
+/* Floating info box (modal) smooth appearance */
+.floating-info-backdrop {
+  animation: floatingBackdropIn 0.25s ease-out forwards;
+}
+
+.floating-info-box {
+  animation: floatingBoxIn 0.3s ease-out forwards;
+}
+
+@keyframes floatingBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatingBoxIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-info-backdrop,
+  .floating-info-box {
+    animation-duration: 0.12s;
+  }
+}

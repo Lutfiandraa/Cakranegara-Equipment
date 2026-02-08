@@ -5,13 +5,14 @@ interface Props {
 }
 
 const { title = 'Cakranegara', description = 'Construction equipment & tool rental' } = Astro.props;
+import { ViewTransitions, slide } from 'astro:transitions';
 import '../styles/global.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 ---
 
 <!doctype html>
-<html lang="id">
+<html lang="id" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,12 +21,29 @@ import Footer from '../components/Footer';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body>
+  <body class="page-transition-body">
     <Navbar client:load />
-    <main>
+    <main transition:animate={slide({ duration: '0.4s', easing: 'ease-in-out' })} class="page-transition-main">
       <slot />
     </main>
     <Footer client:load />
+    <script is:inline>
+      (function () {
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        var isFullLoad = nav && (nav.type === 'reload' || nav.type === 'navigate');
+        if (isFullLoad) {
+          document.documentElement.classList.add('first-load');
+          document.querySelector('main')?.addEventListener('animationend', function once() {
+            document.documentElement.classList.remove('first-load');
+            document.querySelector('main')?.removeEventListener('animationend', once);
+          }, { once: true });
+        }
+      })();
+      document.addEventListener('astro:page-load', function () {
+        document.documentElement.classList.remove('first-load');
+      });
+    </script>
   </body>
 </html>

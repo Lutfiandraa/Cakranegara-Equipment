@@ -1,9 +1,9 @@
 export default function Tech() {
   const products = [
     {
-      title: 'Asset Trackers',
-      description: 'Our asset trackers provide advanced tracking for a wide range of equipment and vehicles.',
-      features: ['Real-time GPS tracking', 'Machine monitoring including engine mileage, utilization and more', 'Geofencing and custom SMS alerts'],
+      title: 'Pelacak Aset',
+      description: 'Pelacak aset kami menyediakan pemantauan canggih untuk berbagai peralatan dan kendaraan.',
+      features: ['Pelacakan GPS real-time', 'Pemantauan mesin termasuk jarak tempuh, utilisasi, dan lainnya', 'Geofencing dan notifikasi SMS kustom'],
       icon: (
         <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -12,19 +12,19 @@ export default function Tech() {
       ),
     },
     {
-      title: 'Cloud-Connected Keypad',
-      description: 'Our cloud-connected, interlocking keypad system gives you access control and security for heavy-duty equipment.',
-      features: ['Monitor usage and operator history', 'Restrict access to authorized users', 'Reduce theft and engine run time'],
+      title: 'App Controller',
+      description: 'Kontrol armada dan tim dari genggaman Anda. Aplikasi mobile dengan menu lengkap untuk memantau durasi kerja armada dan pekerja di lapangan.',
+      features: ['Cek durasi kerja armada dan pekerja', 'Pantau lokasi dan status unit real-time', 'Akses laporan dan riwayat dari mana saja'],
       icon: (
         <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
         </svg>
       ),
     },
     {
       title: 'Dash Cam',
-      description: 'Our dual-view camera system allows for real-time accident prevention and driver monitoring alerts.',
-      features: ['Road and driver-facing cameras', 'Monitor for distracted and dangerous driving', 'Visual and audio alerts'],
+      description: 'Sistem kamera dual-view kami mendukung pencegahan kecelakaan real-time dan peringatan pemantauan pengemudi.',
+      features: ['Kamera menghadap jalan dan pengemudi', 'Pantau mengemudi tidak fokus dan berbahaya', 'Peringatan visual dan audio'],
       icon: (
         <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -34,9 +34,9 @@ export default function Tech() {
       ),
     },
     {
-      title: 'Bluetooth Tags',
-      description: 'Bluetooth technology devices that allow for location tracking of tools, buckets, attachments, and more.',
-      features: ['On-site visibility', 'Mitigate tool loss', 'Reduce time spent manually managing inventory'],
+      title: 'Tag Bluetooth',
+      description: 'Perangkat teknologi Bluetooth untuk pelacakan lokasi perkakas, bucket, attachment, dan lainnya.',
+      features: ['Visibilitas di lokasi', 'Mengurangi kehilangan alat', 'Menghemat waktu pengelolaan inventori secara manual'],
       icon: (
         <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
@@ -45,12 +45,53 @@ export default function Tech() {
     },
   ];
 
+  const industryIconClass = 'w-9 h-9 text-amber-600';
   const industries = [
-    { name: 'Construction Fleet', description: 'Real-time tracking, maintenance tools, and usage data for mixed fleets.' },
-    { name: 'Commercial Builders', description: 'Manage schedules, assets, and crews from site prep to final walkthrough.' },
-    { name: 'Civil Contractors', description: 'Heavy equipment and field teams across large-scale infrastructure projects.' },
-    { name: 'General Contractors', description: 'Centralized equipment, labor, and jobsite data to keep projects on time and on budget.' },
-    { name: 'Utilities', description: 'Operational oversight for utility fleets, from bucket trucks to loaders.' },
+    {
+      name: 'Armada Konstruksi',
+      description: 'Pelacakan real-time, alat perawatan, dan data penggunaan untuk armada campuran.',
+      icon: (
+        <svg className={industryIconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 17a2 2 0 11-4 0 2 2 0 014 0h6a2 2 0 11-4 0M3 12h13m-7-8h6l4 4v6" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Pembangun Komersial',
+      description: 'Kelola jadwal, aset, dan kru dari persiapan lokasi hingga penyerahan akhir.',
+      icon: (
+        <svg className={industryIconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Kontraktor Sipil',
+      description: 'Peralatan berat dan tim lapangan untuk proyek infrastruktur skala besar.',
+      icon: (
+        <svg className={industryIconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4-2v1.618a1 1 0 01-1.447.894L15 17m0-13V4m0 0V2m0 2h2m-2 0h-2m0 6h2m-2 0h-2m0 6h2m-2 0h-2" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Kontraktor Umum',
+      description: 'Data peralatan, tenaga kerja, dan lokasi proyek terpusat agar proyek tepat waktu dan sesuai anggaran.',
+      icon: (
+        <svg className={industryIconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Utilitas',
+      description: 'Pengawasan operasional armada utilitas, dari truk bucket hingga loader.',
+      icon: (
+        <svg className={industryIconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+    },
   ];
 
   const sectionClass = 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8';
@@ -141,8 +182,8 @@ export default function Tech() {
                 key={ind.name}
                 className="p-5 rounded-xl bg-white border border-slate-200 hover:border-amber-300/50 hover:shadow-sm transition-all"
               >
-                <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center mb-3">
-                  <span className="text-amber-600 font-bold">•</span>
+                <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center mb-3 shrink-0">
+                  {ind.icon}
                 </div>
                 <h3 className="font-bold text-slate-800 text-sm md:text-base mb-1.5">{ind.name}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{ind.description}</p>

@@ -13,7 +13,6 @@ export default function Service() {
       ],
       closing:
         'Dengan suku cadang berkualitas, performa mesin alat berat Anda akan lebih terjaga dan tahan lama.',
-      cta: 'GET NOW',
     },
     {
       id: '2',
@@ -28,7 +27,6 @@ export default function Service() {
       ],
       closing:
         'Kami memastikan setiap unit alat berat Anda tetap berfungsi dengan performa terbaik, sehingga operasional proyek berjalan lancar tanpa hambatan.',
-      cta: 'GET NOW',
     },
     {
       id: '3',
@@ -43,7 +41,6 @@ export default function Service() {
       ],
       closing:
         'Dengan kontrak service, Anda tidak perlu khawatir akan downtime yang mengganggu produktivitas.',
-      cta: 'GET NOW',
     },
   ];
 
@@ -61,20 +58,14 @@ export default function Service() {
           <h1 className="font-brand text-4xl md:text-5xl font-bold mb-3 tracking-tight">
             Services.
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl mb-8">
+          <p className="text-slate-300 text-lg md:text-xl">
             Cakranegara – Solusi Rental dan Penyediaan Equipment Terpercaya
           </p>
-          <a
-            href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
-          >
-            Shop Now
-          </a>
         </div>
       </section>
 
       {/* Service cards */}
-      <section className="py-16 md:py-24 bg-slate-50">
+      <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-slate-50">
         <div className={sectionClass}>
           <div className="space-y-16 md:space-y-24">
             {services.map((srv) => (
@@ -99,16 +90,24 @@ export default function Service() {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-slate-600 leading-relaxed mb-8">{srv.closing}</p>
-                  <a
-                    href="/"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
-                  >
-                    {srv.cta}
-                  </a>
+                  <p className="text-slate-600 leading-relaxed">{srv.closing}</p>
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA above footer */}
+      <section className="py-6 md:py-8 bg-slate-50">
+        <div className={sectionClass}>
+          <div className="flex justify-center">
+            <a
+              href="/company"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
+            >
+              Hubungi Kami
+            </a>
           </div>
         </div>
       </section>

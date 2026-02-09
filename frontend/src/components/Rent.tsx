@@ -148,18 +148,6 @@ export default function Rent() {
             </button>
           </div>
         </article>
-        {[6].map((i) => (
-          <article
-            key={i}
-            className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md hover:border-slate-300 transition-all flex flex-col"
-          >
-            <div className="aspect-[4/3] bg-slate-100 shrink-0" title="Image placeholder" />
-            <div className="p-4 flex-1">
-              <h3 className="font-semibold text-slate-800 mb-1">—</h3>
-              <p className="text-slate-600 text-sm">—</p>
-            </div>
-          </article>
-        ))}
       </div>
     </section>
 

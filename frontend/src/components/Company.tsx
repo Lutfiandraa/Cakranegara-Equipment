@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { IoPaperPlaneOutline } from 'react-icons/io5';
+import { IoPaperPlaneOutline, IoPersonCircle } from 'react-icons/io5';
 
 type Message = { role: 'bot' | 'user'; text: string };
 
@@ -55,14 +55,22 @@ export default function Company() {
         {/* Chatbot Customer Service - layout seperti ChatGPT, design & warna tetap */}
         <div className="max-w-2xl mx-auto mt-6 w-full">
           <div className="bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-white/10 shadow-xl overflow-hidden flex flex-col min-h-[380px] max-h-[520px]">
+            {/* Header chat - contact seperti room chat */}
+            <div className="shrink-0 flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-slate-800/80">
+              <IoPersonCircle className="w-10 h-10 text-amber-400 shrink-0" aria-hidden />
+              <div className="min-w-0">
+                <p className="font-semibold text-white truncate">Customer Service-bot</p>
+                <p className="text-xs text-slate-400 mt-0.5">Ada yang bisa kami bantu?</p>
+              </div>
+            </div>
             {/* Area pesan - scrollable, isi tengah saat kosong */}
             <div className="flex-1 overflow-y-auto flex flex-col">
               {messages.length <= 1 ? (
                 /* Welcome state: judul di tengah */
                 <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 min-h-[240px]">
-                  <h3 className="text-lg md:text-xl font-semibold text-white text-center">
-                    Ada yang bisa kami bantu?
-                  </h3>
+                  <p className="text-slate-400 text-sm text-center">
+                    Ketik pertanyaan Anda di bawah.
+                  </p>
                 </div>
               ) : (
                 /* Ada percakapan: tampilkan thread pesan */
@@ -97,12 +105,12 @@ export default function Company() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage(inputValue)}
                   placeholder="Ketik pesan..."
-                  className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:outline-none"
+                  className="flex-1 rounded-l-xl bg-slate-500/30 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => sendMessage(inputValue)}
-                  className="shrink-0 p-2 text-slate-300 hover:text-amber-400 transition-colors disabled:opacity-50"
+                  className="shrink-0 rounded-r-xl p-2 text-slate-300 hover:text-amber-400 transition-colors disabled:opacity-50"
                   aria-label="Kirim"
                 >
                   <IoPaperPlaneOutline className="w-5 h-5" />

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { IoPaperPlaneOutline, IoPersonCircle } from 'react-icons/io5';
+import { IoPaperPlaneOutline } from 'react-icons/io5';
+import { MdEngineering } from 'react-icons/md';
 
 type Message = { role: 'bot' | 'user'; text: string };
 
@@ -40,27 +41,15 @@ export default function Company() {
     <section className="relative flex flex-col items-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
       <div className="relative z-10 w-full max-w-3xl mx-auto text-center">
-        <p className="text-amber-400 font-semibold tracking-widest uppercase text-sm md:text-base mb-5">
-          Cakranegara Heavy Equipment&apos;s
-        </p>
-        <img
-          src="/cakranegara-logo.png"
-          alt="Cakranegara"
-          className="h-32 sm:h-40 md:h-48 w-auto mx-auto mb-5 object-contain"
-        />
-        <p className="text-slate-300 text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-8 md:mb-10">
-          Solusi Rental dan Penyediaan Equipment Terpercaya
-        </p>
-
         {/* Chatbot Customer Service - layout seperti ChatGPT, design & warna tetap */}
-        <div className="max-w-2xl mx-auto mt-6 w-full">
+        <div className="max-w-2xl mx-auto w-full">
           <div className="bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-white/10 shadow-xl overflow-hidden flex flex-col min-h-[380px] max-h-[520px]">
             {/* Header chat - contact seperti room chat */}
             <div className="shrink-0 flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-slate-800/80">
-              <IoPersonCircle className="w-10 h-10 text-amber-400 shrink-0" aria-hidden />
-              <div className="min-w-0">
-                <p className="font-semibold text-white truncate">Customer Service-bot</p>
-                <p className="text-xs text-slate-400 mt-0.5">Ada yang bisa kami bantu?</p>
+              <MdEngineering className="w-10 h-10 text-amber-400 shrink-0" aria-hidden />
+              <div className="min-w-0 flex flex-col items-start justify-center leading-tight text-left">
+                <p className="font-semibold text-white truncate">Mas Cakra-bot</p>
+                <p className="text-xs text-slate-400">Ada yang bisa kami bantu?</p>
               </div>
             </div>
             {/* Area pesan - scrollable, isi tengah saat kosong */}
@@ -69,7 +58,7 @@ export default function Company() {
                 /* Welcome state: judul di tengah */
                 <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 min-h-[240px]">
                   <p className="text-slate-400 text-sm text-center">
-                    Ketik pertanyaan Anda di bawah.
+                    Tanyakan pada Mas Cakra-bot Assistant kami!
                   </p>
                 </div>
               ) : (

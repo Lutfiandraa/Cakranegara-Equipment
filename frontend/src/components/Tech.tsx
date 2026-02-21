@@ -101,7 +101,7 @@ export default function Tech() {
   return (
     <div className="bg-white">
       {/* Hero - same section size as Rent */}
-      <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20">
+      <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20 min-h-[72vh] md:min-h-[80vh]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
         <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
           <p className="text-amber-400 font-semibold tracking-widest uppercase text-xs mb-5">
@@ -109,11 +109,9 @@ export default function Tech() {
           </p>
           <h1 className="font-brand text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-tight">
             Cakranegara
-            <br />
-            <span className="text-amber-400">Powered by Tech</span>
           </h1>
           <p className="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-            Connected software for fleet management, safety, and jobsite visibility.
+            Integrate Software & Technology for safety management
           </p>
           <a
             href="#products"
@@ -131,11 +129,8 @@ export default function Tech() {
       <section id="products" className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-white border-t border-slate-200">
         <div className={sectionClass}>
           <header className="text-center mb-12 md:mb-16">
-            <p className="text-amber-500 font-semibold uppercase tracking-widest text-xs mb-2">
-              Modern Fleet Management
-            </p>
             <h2 className={sectionTitleClass}>
-              Powered by <span className="text-amber-500">Tech</span>
+              Solusi Teknologi Cakranegara
             </h2>
           </header>
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
@@ -155,7 +150,7 @@ export default function Tech() {
                     </li>
                   ))}
                 </ul>
-                <a href="/" className="text-amber-600 font-semibold text-sm hover:text-amber-700 inline-flex items-center gap-1 w-fit">
+                <a href="/company" className="text-amber-600 font-semibold text-sm hover:text-amber-700 inline-flex items-center gap-1 w-fit">
                   Learn more
                   <span aria-hidden>→</span>
                 </a>

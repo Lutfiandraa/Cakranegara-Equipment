@@ -1,8 +1,13 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Rent from '../components/Rent.tsx';
+import HeroRent from './HeroRent.astro';
 ---
 
 <MainLayout title="Rent - Cakranegara" description="Construction equipment and tool rental.">
+  <Fragment slot="head">
+    <link rel="preload" as="video" href="/caterpillar793.mp4" />
+  </Fragment>
+  <HeroRent />
   <Rent client:load />
 </MainLayout>

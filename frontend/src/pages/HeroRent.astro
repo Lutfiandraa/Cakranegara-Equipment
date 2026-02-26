@@ -1,0 +1,51 @@
+---
+// Static hero: no React hydration. Video in initial HTML for instant paint.
+// Optional poster: add public/caterpillar793-poster.jpg then set poster="/caterpillar793-poster.jpg" on <video>. See public/VIDEO-ASSETS.md.
+---
+<section
+  class="relative flex flex-col items-center justify-center text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20 min-h-[70vh] md:min-h-[75vh] bg-slate-900"
+  aria-label="Hero Cakranegara"
+>
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    class="absolute inset-0 w-full h-full object-cover bg-slate-900"
+    aria-hidden="true"
+  >
+    <source src="/caterpillar793.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 bg-black/50" aria-hidden="true" />
+  <div class="relative z-10 text-center max-w-3xl mx-auto w-full">
+    <p class="text-amber-400 font-semibold tracking-widest uppercase text-sm md:text-base mb-5">
+      CAKRANEGARA Heavy Equipment
+    </p>
+    <img
+      src="/cakranegara-logo.png"
+      alt="Cakranegara"
+      class="h-32 sm:h-40 md:h-48 w-auto mx-auto mb-5 object-contain"
+      width="192"
+      height="192"
+      fetchpriority="high"
+    />
+    <p class="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+      Solusi Rental dan Penyediaan Equipment Terpercaya
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a
+        href="/company"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-400/25 border border-amber-300/50 text-white font-semibold rounded-lg hover:bg-amber-400/35 transition-colors text-sm"
+      >
+        Sewa Equipment
+      </a>
+      <a
+        href="/tech"
+        class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/40 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-sm"
+      >
+        Jelajahi Solusi
+      </a>
+    </div>
+  </div>
+</section>

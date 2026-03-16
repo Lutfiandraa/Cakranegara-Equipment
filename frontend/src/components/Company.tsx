@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { IoPaperPlaneOutline } from 'react-icons/io5';
+import { IoPaperPlaneOutline, IoArrowForward, IoMailOutline } from 'react-icons/io5';
 import { MdEngineering } from 'react-icons/md';
 
-type Message = { role: 'bot' | 'user'; text: string };
+type Message = { role: 'bot' | 'user'; text: string; isError?: boolean };
 
 const BOT_REPLIES: Record<string, string> = {
   rental: 'Terima kasih atas minat Anda! Untuk rental equipment (articulated dump truck, loader, excavator, dll.) silakan kunjungi halaman Rent atau hubungi kami untuk penawaran khusus.',
@@ -23,17 +23,55 @@ export default function Company() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const sendMessage = (text: string) => {
+  const sendMessage = async (text: string) => {
     const trimmed = text.trim();
     if (!trimmed) return;
-    setMessages((prev) => [...prev, { role: 'user', text: trimmed }]);
+    
+    // User message
+    const newUserMessage: Message = { role: 'user', text: trimmed };
+    setMessages((prev) => [...prev, newUserMessage]);
     setInputValue('');
-    const key = trimmed.toLowerCase().replace(/\s+/g, ' ');
-    const replyKey = Object.keys(BOT_REPLIES).find((k) => key.includes(k)) || 'default';
-    const botText = BOT_REPLIES[replyKey] || BOT_REPLIES.default;
-    setTimeout(() => {
-      setMessages((prev) => [...prev, { role: 'bot', text: botText }]);
-    }, 600);
+    
+    // Thinking state
+    const thinkingMessage: Message = { 
+      role: 'bot', 
+      text: 'Mas Cakra sedang berpikir...'
+    };
+    setMessages((prev) => [...prev, thinkingMessage]);
+
+    try {
+      const response = await fetch('http://localhost:3000/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversation: [{ role: 'user', text: trimmed }]
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Terjadi kesalahan sistem.');
+      }
+
+      setMessages((prev) => {
+        const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang berpikir...');
+        return [...filtered, { role: 'bot', text: data.result }];
+      });
+
+    } catch (error: any) {
+      console.error('Error:', error);
+      setMessages((prev) => {
+        const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang berpikir...');
+        return [...filtered, { 
+          role: 'bot', 
+          text: 'Halo sepertinya ada kendala dari Mas Cakra-bot tidak dapat menjawab pertanyaan anda, Kami alihkan email kami cakranegara@company.com',
+          isError: true 
+        }];
+      });
+    }
   };
 
   return (
@@ -70,13 +108,24 @@ export default function Company() {
                       className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
+                        className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-left ${
                           msg.role === 'bot'
                             ? 'bg-slate-700/80 text-slate-100 rounded-bl-md'
                             : 'bg-amber-500 text-white rounded-br-md'
                         }`}
                       >
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+                        {msg.isError && (
+                          <div className="mt-3 flex justify-start">
+                            <a 
+                              href="mailto:cakranegara@company.com"
+                              className="inline-flex items-center justify-center w-8 h-8 bg-amber-500 hover:bg-amber-600 text-white rounded-full transition-all hover:translate-x-1 shadow-lg shadow-amber-500/20"
+                              aria-label="Kirim Email"
+                            >
+                              <IoArrowForward className="w-5 h-5" />
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}

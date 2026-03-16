@@ -1,0 +1,20 @@
+{
+  "name": "gemini-chatbot-api",
+  "version": "1.0.0",
+  "description": "A simple full-stack AI chatbot project using Node.js + Express and Vanilla JavaScript.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

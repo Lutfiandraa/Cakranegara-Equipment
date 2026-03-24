@@ -56,7 +56,7 @@ The goal of this project is to modernize heavy equipment rental services in Indo
 
 ## 📸 Screenshots
 
-*(Add your application screenshots here)*
+<img src="frontend/public/landingpage.png" width="800"/>
 
 ---
 

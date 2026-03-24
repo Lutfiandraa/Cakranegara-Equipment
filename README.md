@@ -1,4 +1,4 @@
-# 🚜 Cakranegara – Heavy Equipment Rental Platform
+# 🏗️ Cakranegara – Heavy Equipment Rental 🚜
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -12,7 +12,7 @@ This platform is also integrated with an AI-powered customer service chatbot usi
 
 ## 🎯 Key Features
 
-* 🏗️ **Heavy Equipment Rental Management**
+* 🚧 **Heavy Equipment Rental Management**
   Manage and explore various heavy equipment available for rent.
 
 * 📦 **Booking & Rental System**

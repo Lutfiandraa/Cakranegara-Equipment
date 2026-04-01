@@ -6,7 +6,8 @@ import HeroRent from './HeroRent.astro';
 
 <MainLayout title="Cakranegara - Equipment Rental" description="Construction equipment and tool rental. Rent, buy, and manage your fleet.">
   <Fragment slot="head">
-    <link rel="preload" as="video" href="/caterpillar793.mp4" />
+    <link rel="preload" as="image" href="/landingpage.png" />
+    <link rel="preload" as="video" href="/caterpillar793.mp4" type="video/mp4" />
   </Fragment>
   <HeroRent />
   <Rent client:load />

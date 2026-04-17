@@ -13,15 +13,32 @@ const BOT_REPLIES: Record<string, string> = {
 };
 
 export default function Company() {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', text: 'Halo! Selamat datang di Cakranegara. Ada yang bisa kami bantu? Ketik pertanyaan Anda di bawah.' },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const [hasHovered, setHasHovered] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  const handleInputHover = () => {
+    if (!hasHovered && messages.length === 0) {
+      setHasHovered(true);
+      setMessages([{ role: 'bot', text: 'Mas Cakra sedang mengetik...' }]);
+      
+      setTimeout(() => {
+        setMessages((prev) => {
+          const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang mengetik...');
+          // Use unshift to ensure greeting is at the top if user suddenly typed something
+          return [
+            { role: 'bot', text: 'Halo! Selamat datang di Cakranegara. Ada yang bisa kami bantu? Ketik pertanyaan Anda di bawah.' },
+            ...filtered
+          ];
+        });
+      }, 1000);
+    }
+  };
 
   const sendMessage = async (text: string) => {
     const trimmed = text.trim();
@@ -35,7 +52,7 @@ export default function Company() {
     // Thinking state
     const thinkingMessage: Message = { 
       role: 'bot', 
-      text: 'Mas Cakra sedang berpikir...'
+      text: 'Mas Cakra sedang mengetik...'
     };
     setMessages((prev) => [...prev, thinkingMessage]);
 
@@ -57,14 +74,14 @@ export default function Company() {
       }
 
       setMessages((prev) => {
-        const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang berpikir...');
+        const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang mengetik...');
         return [...filtered, { role: 'bot', text: data.result }];
       });
 
     } catch (error: any) {
       console.error('Error:', error);
       setMessages((prev) => {
-        const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang berpikir...');
+        const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang mengetik...');
         return [...filtered, { 
           role: 'bot', 
           text: 'Halo sepertinya ada kendala dari Mas Cakra-bot tidak dapat menjawab pertanyaan anda, Kami alihkan email kami cakranegara@company.com',
@@ -92,7 +109,7 @@ export default function Company() {
             </div>
             {/* Area pesan - scrollable, isi tengah saat kosong */}
             <div className="flex-1 overflow-y-auto flex flex-col">
-              {messages.length <= 1 ? (
+              {messages.length === 0 ? (
                 /* Welcome state: judul di tengah */
                 <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 min-h-[240px]">
                   <p className="text-slate-400 text-sm text-center">
@@ -135,7 +152,7 @@ export default function Company() {
             </div>
 
             {/* Input bar selalu di bawah (seperti ChatGPT) */}
-            <div className="shrink-0 p-3 border-t border-white/10">
+            <div className="shrink-0 p-3 border-t border-white/10" onMouseEnter={handleInputHover}>
               <div className="flex gap-2 rounded-xl border border-white/20 bg-white/5 focus-within:border-amber-500/50 focus-within:ring-2 focus-within:ring-amber-500/20 transition-all">
                 <input
                   type="text"

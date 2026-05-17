@@ -4,6 +4,15 @@ import { MdEngineering } from 'react-icons/md';
 
 type Message = { role: 'bot' | 'user'; text: string; isError?: boolean };
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 const BOT_REPLIES: Record<string, string> = {
   rental: 'Terima kasih atas minat Anda! Untuk rental equipment (articulated dump truck, loader, excavator, dll.) silakan kunjungi halaman Rent atau hubungi kami untuk penawaran khusus.',
   spare: 'Untuk spare part dan layanan perawatan alat berat, Anda dapat mengunjungi halaman Service atau menghubungi tim kami. Kami siap membantu kebutuhan parts dan maintenance Anda.',
@@ -75,7 +84,7 @@ export default function Company() {
 
       setMessages((prev) => {
         const filtered = prev.filter(m => m.text !== 'Mas Cakra sedang mengetik...');
-        return [...filtered, { role: 'bot', text: data.result }];
+        return [...filtered, { role: 'bot', text: escapeHtml(String(data.result || '')) }];
       });
 
     } catch (error: any) {

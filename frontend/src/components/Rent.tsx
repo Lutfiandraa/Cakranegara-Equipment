@@ -9,75 +9,82 @@ export default function Rent() {
     <>
     <section className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-t border-white/10">
       <div className="max-w-5xl mx-auto flex flex-col gap-8 md:gap-12">
-        {/* Box 1: foto kiri, teks kanan */}
         <article className="flex flex-col md:flex-row">
-          <div className="md:w-1/3 shrink-0 aspect-square">
+          <div className="md:w-1/3 shrink-0 aspect-square relative" data-reveal="left">
             <img src="/articulatecat.png" alt="Articulate Caterpillar Dump Truck" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/60 pointer-events-none" />
           </div>
           <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
-            <h3 className="font-semibold text-white text-lg md:text-xl mb-2">Articulate Caterpillar</h3>
-            <p className="text-amber-50 text-sm mb-4">Truk jungkit artikulasi untuk pertambangan — spesifikasi lengkap tersedia di informasi.</p>
-            <button type="button" onClick={() => setShowInfoBox('articulate')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
+            <h3 data-reveal="up" data-delay="1" className="font-semibold text-white text-lg md:text-xl mb-2">Articulate Caterpillar</h3>
+            <p data-reveal="up" data-delay="2" className="text-amber-50 text-sm mb-4">Truk jungkit artikulasi untuk pertambangan — spesifikasi lengkap tersedia di informasi.</p>
+            <button data-reveal="up" data-delay="3" type="button" onClick={() => setShowInfoBox('articulate')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
           </div>
         </article>
-        {/* Box 2: foto kanan, teks kiri */}
         <article className="flex flex-col md:flex-row-reverse">
-          <div className="md:w-1/3 shrink-0 aspect-square">
+          <div className="md:w-1/3 shrink-0 aspect-square relative" data-reveal="right">
             <img src="/loadercat.png" alt="Loader Caterpillar 994H" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/60 pointer-events-none" />
           </div>
           <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
-            <h3 className="font-semibold text-white text-lg md:text-xl mb-2">Loader Caterpillar 994H</h3>
-            <p className="text-amber-50 text-sm mb-4">Loader roda besar untuk pertambangan — spesifikasi lengkap tersedia di informasi.</p>
-            <button type="button" onClick={() => setShowInfoBox('loader')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
+            <h3 data-reveal="up" data-delay="1" className="font-semibold text-white text-lg md:text-xl mb-2">Loader Caterpillar 994H</h3>
+            <p data-reveal="up" data-delay="2" className="text-amber-50 text-sm mb-4">Loader roda besar untuk pertambangan — spesifikasi lengkap tersedia di informasi.</p>
+            <button data-reveal="up" data-delay="3" type="button" onClick={() => setShowInfoBox('loader')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
           </div>
         </article>
-        {/* Box 3: foto kiri */}
         <article className="flex flex-col md:flex-row">
-          <div className="md:w-1/3 shrink-0 aspect-square">
+          <div className="md:w-1/3 shrink-0 aspect-square relative" data-reveal="left">
             <img src="/dumptruckcat.png" alt="Dump Truck Caterpillar" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/60 pointer-events-none" />
           </div>
           <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
-            <h3 className="font-semibold text-white text-lg md:text-xl mb-2">Dump Truck Caterpillar</h3>
-            <p className="text-amber-50 text-sm mb-4">Truk dump rigid untuk pertambangan — spesifikasi lengkap tersedia di informasi.</p>
-            <button type="button" onClick={() => setShowInfoBox('dumptruck')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
+            <h3 data-reveal="up" data-delay="1" className="font-semibold text-white text-lg md:text-xl mb-2">Dump Truck Caterpillar</h3>
+            <p data-reveal="up" data-delay="2" className="text-amber-50 text-sm mb-4">Truk dump rigid untuk pertambangan — spesifikasi lengkap tersedia di informasi.</p>
+            <button data-reveal="up" data-delay="3" type="button" onClick={() => setShowInfoBox('dumptruck')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
           </div>
         </article>
-        {/* Box 4: foto kanan */}
         <article className="flex flex-col md:flex-row-reverse">
-          <div className="md:w-1/3 shrink-0 aspect-square">
+          <div className="md:w-1/3 shrink-0 aspect-square relative" data-reveal="right">
             <img src="/excapillar.png" alt="Excavator Caterpillar" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/60 pointer-events-none" />
           </div>
           <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
-            <h3 className="font-semibold text-white text-lg md:text-xl mb-2">Excavator + Different plug Bucket Request</h3>
-            <p className="text-amber-50 text-sm mb-4">Excavator hidraulik dengan pilihan bucket — spesifikasi lengkap tersedia di informasi.</p>
-            <button type="button" onClick={() => setShowInfoBox('excavator')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
+            <h3 data-reveal="up" data-delay="1" className="font-semibold text-white text-lg md:text-xl mb-2">Excavator + Different plug Bucket Request</h3>
+            <p data-reveal="up" data-delay="2" className="text-amber-50 text-sm mb-4">Excavator hidraulik dengan pilihan bucket — spesifikasi lengkap tersedia di informasi.</p>
+            <button data-reveal="up" data-delay="3" type="button" onClick={() => setShowInfoBox('excavator')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
           </div>
         </article>
-        {/* Box 5: foto kiri */}
         <article className="flex flex-col md:flex-row">
-          <div className="md:w-1/3 shrink-0 aspect-square">
+          <div className="md:w-1/3 shrink-0 aspect-square relative" data-reveal="left">
             <img src="/drilling.png" alt="MD6640 Rotary Drill" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/60 pointer-events-none" />
           </div>
           <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
-            <h3 className="font-semibold text-white text-lg md:text-xl mb-2">MD6640 Rotary Drill</h3>
-            <p className="text-amber-50 text-sm mb-4">Rotary drill pertambangan — spesifikasi lengkap di info.</p>
-            <button type="button" onClick={() => setShowInfoBox('drill')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
+            <h3 data-reveal="up" data-delay="1" className="font-semibold text-white text-lg md:text-xl mb-2">MD6640 Rotary Drill</h3>
+            <p data-reveal="up" data-delay="2" className="text-amber-50 text-sm mb-4">Rotary drill pertambangan — spesifikasi lengkap di info.</p>
+            <button data-reveal="up" data-delay="3" type="button" onClick={() => setShowInfoBox('drill')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
           </div>
         </article>
-        {/* Box 6: foto kanan */}
         <article className="flex flex-col md:flex-row-reverse">
-          <div className="md:w-1/3 shrink-0 aspect-square">
+          <div className="md:w-1/3 shrink-0 aspect-square relative" data-reveal="right">
             <img src="/undertage.png" alt="R1700 Undertage Caterpillar" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/60 pointer-events-none" />
           </div>
           <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
-            <h3 className="font-semibold text-white text-lg md:text-xl mb-2">R1700 Undertage Caterpillar</h3>
-            <p className="text-amber-50 text-sm mb-4">Cocok untuk ekspedisi bawah tanah.</p>
-            <button type="button" onClick={() => setShowInfoBox('undertage')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
+            <h3 data-reveal="up" data-delay="1" className="font-semibold text-white text-lg md:text-xl mb-2">R1700 Undertage Caterpillar</h3>
+            <p data-reveal="up" data-delay="2" className="text-amber-50 text-sm mb-4">Cocok untuk ekspedisi bawah tanah.</p>
+            <button data-reveal="up" data-delay="3" type="button" onClick={() => setShowInfoBox('undertage')} className="text-amber-400 font-semibold text-sm hover:text-amber-300 inline-flex items-center gap-1 w-fit transition-colors">Lihat Spesifikasi <span aria-hidden>→</span></button>
           </div>
         </article>
       </div>
       <div className="max-w-5xl mx-auto mt-12 md:mt-14 flex justify-center">
         <a
+          data-reveal="up"
           href="/company"
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-400/25 border border-amber-300/50 text-white font-semibold rounded-lg hover:bg-amber-400/35 transition-colors text-sm"
         >

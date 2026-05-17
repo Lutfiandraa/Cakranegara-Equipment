@@ -100,20 +100,20 @@ export default function Tech() {
 
   return (
     <div className="bg-white">
-      {/* Hero - same section size as Rent */}
       <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20 min-h-[72vh] md:min-h-[80vh]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
         <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
-          <p className="text-amber-400 font-semibold tracking-widest uppercase text-xs mb-5">
+          <p data-reveal="up" data-delay="1" className="text-amber-400 font-semibold tracking-widest uppercase text-xs mb-5">
             Powered by Cakranegara Tech
           </p>
-          <h1 className="font-brand text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-tight">
+          <h1 data-reveal="up" data-delay="2" className="font-brand text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-tight">
             Cakranegara
           </h1>
-          <p className="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-            Integrate Software & Technology for safety management
+          <p data-reveal="up" data-delay="3" className="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+            Integrate Software &amp; Technology for safety management
           </p>
           <a
+            data-reveal="up" data-delay="4"
             href="#products"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
           >
@@ -125,18 +125,19 @@ export default function Tech() {
         </div>
       </section>
 
-      {/* Products */}
       <section id="products" className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-white border-t border-slate-200">
         <div className={sectionClass}>
-          <header className="text-center mb-12 md:mb-16">
+          <header data-reveal="up" className="text-center mb-12 md:mb-16">
             <h2 className={sectionTitleClass}>
               Solusi Teknologi Cakranegara
             </h2>
           </header>
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
-            {products.map((product) => (
+            {products.map((product, i) => (
               <article
                 key={product.title}
+                data-reveal="up"
+                data-delay={String(i + 1)}
                 className="flex flex-col p-6 md:p-7 rounded-xl border border-slate-200 bg-slate-50/50 hover:border-amber-300/60 hover:bg-amber-50/20 transition-all"
               >
                 <div className="mb-4">{product.icon}</div>
@@ -160,10 +161,9 @@ export default function Tech() {
         </div>
       </section>
 
-      {/* Industries */}
       <section className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-slate-50 border-t border-slate-200">
         <div className={sectionClass}>
-          <header className="text-center mb-12 md:mb-16">
+          <header data-reveal="up" className="text-center mb-12 md:mb-16">
             <h2 className={sectionTitleClass}>
               For every industry
             </h2>
@@ -172,9 +172,11 @@ export default function Tech() {
             </p>
           </header>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {industries.map((ind) => (
+            {industries.map((ind, i) => (
               <div
                 key={ind.name}
+                data-reveal="up"
+                data-delay={String(i + 1)}
                 className="p-5 rounded-xl bg-white border border-slate-200 hover:border-amber-300/50 hover:shadow-sm transition-all"
               >
                 <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center mb-3 shrink-0">

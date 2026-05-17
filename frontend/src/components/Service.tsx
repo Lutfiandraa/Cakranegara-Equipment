@@ -48,23 +48,21 @@ export default function Service() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section
         id="1"
         className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
         <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
-          <h1 className="font-brand text-4xl md:text-5xl font-bold mb-3 tracking-tight">
+          <h1 data-reveal="up" data-delay="1" className="font-brand text-4xl md:text-5xl font-bold mb-3 tracking-tight">
             Services.
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl">
+          <p data-reveal="up" data-delay="2" className="text-slate-300 text-lg md:text-xl">
             Cakranegara – Solusi Rental dan Penyediaan Equipment Terpercaya
           </p>
         </div>
       </section>
 
-      {/* Service cards */}
       <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-slate-50">
         <div className={sectionClass}>
           <div className="space-y-16 md:space-y-24">
@@ -72,6 +70,7 @@ export default function Service() {
               <article
                 key={srv.id}
                 id={srv.id}
+                data-reveal="up"
                 className="scroll-mt-24 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="p-6 md:p-8 lg:p-10">
@@ -98,11 +97,11 @@ export default function Service() {
         </div>
       </section>
 
-      {/* CTA above footer */}
       <section className="py-6 md:py-8 bg-slate-50">
         <div className={sectionClass}>
           <div className="flex justify-center">
             <a
+              data-reveal="up"
               href="/company"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
             >

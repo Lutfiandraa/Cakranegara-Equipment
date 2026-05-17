@@ -37,6 +37,16 @@ function normalizeText(text = "") {
     return String(text || "").toLowerCase().trim();
 }
 
+function stripHtml(text = "") {
+    return String(text || "")
+        .replace(/<[^>]*>/g, "")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
+}
+
 // --- Helper Extractors (fixed & robust) ---
 function detectEquipment(text) {
     const normalized = normalizeText(text);
@@ -299,6 +309,7 @@ Tolong buat:
 
         // remove excessive blank lines and ensure short response
         finalText = finalText.replace(/\n{2,}/g, "\n").split("\n").slice(0, 4).join(" ").trim();
+        finalText = stripHtml(finalText);
 
         return ok(res, { result: finalText });
     } catch (err) {

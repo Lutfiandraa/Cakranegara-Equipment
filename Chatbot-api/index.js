@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-// Simple request logger
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
     next();
@@ -22,7 +21,6 @@ const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
 });
 
-// canonical equipment list (lowercase)
 const AVAILABLE_EQUIPMENT = [
     "excavator",
     "bulldozer",
@@ -47,7 +45,6 @@ function stripHtml(text = "") {
         .replace(/&#39;/g, "'");
 }
 
-// --- Helper Extractors (fixed & robust) ---
 function detectEquipment(text) {
     const normalized = normalizeText(text);
     const aliases = {
@@ -64,7 +61,6 @@ function detectEquipment(text) {
         if (words.some(word => normalized.includes(word))) return canonical;
     }
 
-    // fallback: direct substring match against canonical names
     for (const canonical of AVAILABLE_EQUIPMENT) {
         if (normalized.includes(canonical)) return canonical;
     }
@@ -81,7 +77,6 @@ function detectDuration(text) {
     if (mMinggu) return `${mMinggu[1]} minggu`;
     const mHari = normalized.match(/(\d+)\s*hari/);
     if (mHari) return `${mHari[1]} hari`;
-    // compact forms
     const compact = normalized.match(/(\d+)bulan|(\d+)minggu|(\d+)hari/);
     if (compact) {
         const num = compact[1] || compact[2] || compact[3];
@@ -105,7 +100,6 @@ function detectLocation(text) {
         const m = normalized.match(p);
         if (m && m[1]) return m[1].trim();
     }
-    // fallback: short free-text location (avoid pure numbers)
     const maybe = normalized.trim();
     if (maybe.length > 3 && /[a-zA-Z]/.test(maybe) && !/^\d+$/.test(maybe)) return maybe;
     return null;
@@ -113,7 +107,6 @@ function detectLocation(text) {
 
 function detectStartDate(text) {
     const normalized = normalizeText(text);
-    // explicit long date Indonesian
     const explicitDate = text.match(/(\d{1,2}\s+(januari|februari|maret|april|mei|juni|juli|agustus|september|oktober|november|desember)\s*\d{0,4})/i);
     if (explicitDate) return explicitDate[0].trim();
     if (normalized.includes("besok")) return "besok";
@@ -127,7 +120,6 @@ function detectStartDate(text) {
     return null;
 }
 
-// --- Extract booking state from conversation ---
 function extractBookingData(conversation) {
     const state = {
         equipment: null,
@@ -136,7 +128,6 @@ function extractBookingData(conversation) {
         duration: null
     };
 
-    // iterate messages in order (latest messages potentially override earlier)
     for (const msg of conversation) {
         if (!msg || msg.role !== "user" || !msg.text) continue;
         const text = msg.text;
@@ -153,7 +144,6 @@ function extractBookingData(conversation) {
         const dur = detectDuration(text);
         if (dur) state.duration = dur;
 
-        // contextual short answers fallback
         const words = text.trim().split(/\s+/).length;
         if (words <= 4) {
             if (!state.equipment && AVAILABLE_EQUIPMENT.some(eq => normalizeText(text).includes(eq.split(" ")[0]))) {
@@ -179,7 +169,6 @@ function isGreeting(text) {
     return greetingPattern.test(normalized);
 }
 
-// Standardized JSON response helpers
 function ok(res, data) {
     return res.json({ success: true, data });
 }
@@ -190,12 +179,10 @@ function serverError(res, message) {
     return res.status(500).json({ success: false, error: message });
 }
 
-// Health endpoint
 app.get("/health", (_, res) => ok(res, { status: "ok", timestamp: new Date().toISOString() }));
 
 app.post("/api/chat", async (req, res) => {
     try {
-        // small debounce to simulate "thinking" and reduce spamming
         await new Promise(resolve => setTimeout(resolve, 350));
 
         const { conversation } = req.body;
@@ -205,7 +192,6 @@ app.post("/api/chat", async (req, res) => {
 
         const lastMessage = conversation[conversation.length - 1];
 
-        // greeting shortcut for short greetings
         if (lastMessage && lastMessage.role === "user" && lastMessage.text && isGreeting(lastMessage.text) && conversation.length <= 2) {
             const greetingText = normalizeText(lastMessage.text);
             const isFormal = /^(halo|selamat)/i.test(greetingText);
@@ -218,7 +204,6 @@ app.post("/api/chat", async (req, res) => {
 
         const bookingData = extractBookingData(conversation);
 
-        // sequential validation with helpful prompts
         if (!bookingData.equipment) {
             return ok(res, {
                 result:
@@ -226,7 +211,6 @@ app.post("/api/chat", async (req, res) => {
             });
         }
 
-        // validate availability
         if (!AVAILABLE_EQUIPMENT.includes(bookingData.equipment)) {
             const suggestion = AVAILABLE_EQUIPMENT.find(eq => bookingData.equipment && eq.includes(bookingData.equipment.split(" ")[0]));
             return ok(res, {
@@ -254,7 +238,6 @@ app.post("/api/chat", async (req, res) => {
             });
         }
 
-        // All fields present -> ask Gemini to produce final confirmation
         const systemInstruction = `
 You are a concise and professional Indonesian customer service agent for a heavy-equipment rental company.
 Respond in Indonesian. Be polite, clear, and avoid repetition. Keep final confirmation to 1-3 short sentences (max 2 lines).
@@ -291,10 +274,8 @@ Tolong buat:
             }
         });
 
-        // Robust extraction of text from response (handle possible shapes)
         let finalText = "";
         if (generation) {
-            // prefer .text, fallbacks for different SDK shapes
             finalText = generation.text || (generation.outputText && generation.outputText[0]) || "";
             if (!finalText && Array.isArray(generation.contents) && generation.contents[0]) {
                 finalText = generation.contents[0].text || "";
@@ -302,12 +283,10 @@ Tolong buat:
         }
         finalText = String(finalText || "").trim();
 
-        // safe fallback if model returns nothing
         if (!finalText) {
             finalText = `Konfirmasi: Permintaan sewa untuk ${formatEquipmentName(bookingData.equipment)} di ${bookingData.location} mulai ${bookingData.startDate} selama ${bookingData.duration} telah kami catat. Mohon berikan nama kontak dan nomor telepon yang dapat dihubungi.`;
         }
 
-        // remove excessive blank lines and ensure short response
         finalText = finalText.replace(/\n{2,}/g, "\n").split("\n").slice(0, 4).join(" ").trim();
         finalText = stripHtml(finalText);
 

@@ -1,0 +1,70 @@
+---
+const navLinks = [
+  { label: 'Rent', href: '/rent' },
+  { label: 'Tech', href: '/tech' },
+  { label: 'Service', href: '/service' },
+  { label: 'Company', href: '/company' },
+];
+---
+
+<footer class="bg-equipment-black border-t border-equipment-gold/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+      <div>
+        <a href="/" class="inline-block mb-4">
+          <span class="font-display font-bold text-equipment-gold text-xl uppercase tracking-[0.15em]">
+            Cakranegara
+          </span>
+          <br />
+          <span class="font-body text-equipment-text-muted text-xs uppercase tracking-[0.25em]">
+            Heavy Equipment
+          </span>
+        </a>
+        <p class="font-body text-equipment-text-muted text-sm leading-relaxed">
+          Jl. Raya Pertambangan No. 88<br />
+          Jakarta Selatan, Indonesia 12345
+        </p>
+      </div>
+
+      <div>
+        <p class="font-display uppercase tracking-widest text-equipment-text-primary text-xs mb-4">
+          Navigation
+        </p>
+        <ul class="space-y-2">
+          {navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="font-body text-equipment-text-muted text-sm hover:text-equipment-gold transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-display uppercase tracking-widest text-equipment-text-primary text-xs mb-4">
+          Contact
+        </p>
+        <ul class="space-y-2 font-body text-equipment-text-muted text-sm">
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-equipment-gold text-base">phone</span>
+            +62 21 1234 5678
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-equipment-gold text-base">mail</span>
+            info@cakranegara.co.id
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-white/5 text-center">
+      <p class="font-body text-equipment-text-muted text-xs">
+        &copy; {new Date().getFullYear()} Cakranegara Heavy Equipment. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,24 @@
+---
+const items = [
+  'Articulated Trucks',
+  'Wheel Loaders',
+  'Dump Trucks',
+  'Excavators',
+  'Rotary Drills',
+  'Underground Loaders',
+];
+---
+
+<div class="bg-equipment-surface border-y border-white/5 overflow-hidden py-4">
+  <div class="ticker-track flex whitespace-nowrap">
+    {/* Duplicate items for seamless infinite scroll */}
+    {[...items, ...items].map((item, i) => (
+      <span class="inline-flex items-center gap-6 px-6">
+        <span class="font-display uppercase tracking-[0.2em] text-equipment-text-muted text-sm">
+          {item}
+        </span>
+        <span class="text-equipment-gold/40 text-sm" aria-hidden="true">·</span>
+      </span>
+    ))}
+  </div>
+</div>

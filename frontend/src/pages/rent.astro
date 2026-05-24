@@ -1,13 +1,18 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Rent from '../components/Rent.tsx';
-import HeroRent from './HeroRent.astro';
+import HeroSection from './HeroSection.astro';
+import Ticker from './Ticker.astro';
+import FleetGrid from '../components/FleetGrid.tsx';
+import WhyUs from './WhyUs.astro';
+import HowItWorks from './HowItWorks.astro';
+import CTABanner from './CTABanner.astro';
 ---
 
-<MainLayout title="Rent - Cakranegara" description="Construction equipment and tool rental.">
-  <Fragment slot="head">
-    <link rel="preload" as="video" href="/caterpillar793.mp4" />
-  </Fragment>
-  <HeroRent />
-  <Rent client:load />
+<MainLayout title="Rent - Cakranegara Heavy Equipment">
+  <HeroSection />
+  <Ticker />
+  <FleetGrid client:load />
+  <WhyUs />
+  <HowItWorks />
+  <CTABanner />
 </MainLayout>

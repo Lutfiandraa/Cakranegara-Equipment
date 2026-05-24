@@ -1,0 +1,118 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { label: 'Rent', href: '/rent' },
+  { label: 'Tech', href: '/tech' },
+  { label: 'Service', href: '/service' },
+  { label: 'Company', href: '/company' },
+];
+---
+
+<header
+  id="main-navbar"
+  class="fixed top-0 left-0 right-0 z-50 bg-equipment-black/80 backdrop-blur-md transition-all duration-300 border-b border-white/5"
+>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href="/" class="flex flex-col leading-none">
+        <span class="font-display font-bold text-equipment-gold text-lg md:text-xl uppercase tracking-[0.15em]">
+          Cakranegara
+        </span>
+        <span class="font-body text-equipment-text-muted text-[10px] md:text-xs uppercase tracking-[0.25em]">
+          Heavy Equipment
+        </span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 lg:gap-10">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  'font-display uppercase tracking-widest text-xs py-1 transition-colors duration-200',
+                  isActive
+                    ? 'text-equipment-gold border-b border-equipment-gold'
+                    : 'text-equipment-text-primary hover:text-equipment-gold',
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="flex items-center gap-4">
+
+        <button
+          id="nav-toggle"
+          type="button"
+          class="p-2 rounded-lg text-equipment-text-primary hover:bg-white/10 md:hidden"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-white/10">
+      <ul class="flex flex-col gap-1 pt-3">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  'block py-2 px-2 font-display uppercase tracking-widest text-sm transition-colors',
+                  isActive
+                    ? 'text-equipment-gold'
+                    : 'text-equipment-text-primary hover:text-equipment-gold',
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+(function () {
+  var navbar = document.getElementById('main-navbar');
+  if (!navbar) return;
+
+  function onScroll() {
+    if (window.scrollY > 20) {
+      navbar.classList.remove('bg-equipment-black/80', 'backdrop-blur-md');
+      navbar.classList.add('bg-[#0A0A0A]');
+    } else {
+      navbar.classList.add('bg-equipment-black/80', 'backdrop-blur-md');
+      navbar.classList.remove('bg-[#0A0A0A]');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var toggle = document.getElementById('nav-toggle');
+  var menu = document.getElementById('mobile-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      menu.classList.toggle('hidden');
+    });
+  }
+})();
+</script>

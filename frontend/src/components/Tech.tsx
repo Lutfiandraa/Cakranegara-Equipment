@@ -5,7 +5,7 @@ export default function Tech() {
       description: 'Pelacak aset kami menyediakan pemantauan canggih untuk berbagai peralatan dan kendaraan.',
       features: ['Pelacakan GPS real-time', 'Pemantauan mesin termasuk jarak tempuh, utilisasi, dan lainnya', 'Geofencing dan notifikasi SMS kustom'],
       icon: (
-        <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-10 h-10 text-equipment-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
@@ -16,7 +16,7 @@ export default function Tech() {
       description: 'Kontrol armada dan tim dari genggaman Anda. Aplikasi mobile dengan menu lengkap untuk memantau durasi kerja armada dan pekerja di lapangan.',
       features: ['Cek durasi kerja armada dan pekerja', 'Pantau lokasi dan status unit real-time', 'Akses laporan dan riwayat dari mana saja'],
       icon: (
-        <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-10 h-10 text-equipment-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
         </svg>
       ),
@@ -26,7 +26,7 @@ export default function Tech() {
       description: 'Sistem kamera dual-view kami mendukung pencegahan kecelakaan real-time dan peringatan pemantauan pengemudi.',
       features: ['Kamera menghadap jalan dan pengemudi', 'Pantau mengemudi tidak fokus dan berbahaya', 'Peringatan visual dan audio'],
       icon: (
-        <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-10 h-10 text-equipment-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 13v7a2 2 0 01-2 2H7a2 2 0 01-2-2v-7" />
@@ -38,14 +38,14 @@ export default function Tech() {
       description: 'Perangkat teknologi Bluetooth untuk pelacakan lokasi perkakas, bucket, attachment, dan lainnya.',
       features: ['Visibilitas di lokasi', 'Mengurangi kehilangan alat', 'Menghemat waktu pengelolaan inventori secara manual'],
       icon: (
-        <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-10 h-10 text-equipment-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
         </svg>
       ),
     },
   ];
 
-  const industryIconClass = 'w-9 h-9 text-amber-600';
+  const industryIconClass = 'w-9 h-9 text-equipment-gold';
   const industries = [
     {
       name: 'Armada Konstruksi',
@@ -95,37 +95,36 @@ export default function Tech() {
   ];
 
   const sectionClass = 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8';
-  const sectionTitleClass = 'font-brand text-2xl md:text-3xl font-bold text-slate-800';
-  const sectionSubtitleClass = 'text-slate-600 mt-2 max-w-2xl';
+  const sectionTitleClass = 'font-display text-2xl md:text-4xl font-bold text-equipment-text-primary uppercase tracking-wide';
+  const sectionSubtitleClass = 'text-equipment-text-muted mt-2 max-w-2xl';
 
   return (
-    <div className="bg-white">
-      <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20 min-h-[72vh] md:min-h-[80vh]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
+    <div className="bg-equipment-black">
+      {/* Hero section */}
+      <section className="relative flex flex-col items-center justify-center bg-equipment-black text-equipment-text-primary px-4 overflow-hidden pt-36 md:pt-44 pb-16 md:pb-24 min-h-[60vh] md:min-h-[70vh]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,146,42,0.1)_0%,transparent_70%)]" />
         <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
-          <p data-reveal="up" data-delay="1" className="text-amber-400 font-semibold tracking-widest uppercase text-xs mb-5">
+          <p data-reveal="up" data-delay="1" className="text-equipment-gold font-display uppercase tracking-[0.2em] text-xs md:text-sm mb-5">
             Powered by Cakranegara Tech
           </p>
-          <h1 data-reveal="up" data-delay="2" className="font-brand text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-tight">
-            Cakranegara
+          <h1 data-reveal="up" data-delay="2" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 tracking-tight uppercase leading-none">
+            Cakranegara <span className="text-equipment-gold">Tech</span>
           </h1>
-          <p data-reveal="up" data-delay="3" className="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+          <p data-reveal="up" data-delay="3" className="text-equipment-text-muted text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
             Integrate Software &amp; Technology for safety management
           </p>
           <a
             data-reveal="up" data-delay="4"
             href="#products"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
+            className="btn-primary"
           >
             Explore solutions
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
           </a>
         </div>
       </section>
 
-      <section id="products" className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-white border-t border-slate-200">
+      {/* Solutions Section */}
+      <section id="products" className="pt-16 md:pt-24 pb-16 md:pb-24 px-4 bg-[#111111] border-t border-white/5 scroll-mt-20">
         <div className={sectionClass}>
           <header data-reveal="up" className="text-center mb-12 md:mb-16">
             <h2 className={sectionTitleClass}>
@@ -138,20 +137,20 @@ export default function Tech() {
                 key={product.title}
                 data-reveal="up"
                 data-delay={String(i + 1)}
-                className="flex flex-col p-6 md:p-7 rounded-xl border border-slate-200 bg-slate-50/50 hover:border-amber-300/60 hover:bg-amber-50/20 transition-all"
+                className="flex flex-col p-6 md:p-8 bg-[#1A1A1A] border border-white/5 hover:border-equipment-gold/20 hover:bg-[#1A1A1A]/80 transition-all duration-300"
               >
                 <div className="mb-4">{product.icon}</div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">{product.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-1">{product.description}</p>
+                <h3 className="text-lg font-display uppercase tracking-wide font-bold text-equipment-text-primary mb-2">{product.title}</h3>
+                <p className="text-equipment-text-muted text-sm leading-relaxed mb-5 flex-1">{product.description}</p>
                 <ul className="space-y-1.5 mb-5">
                   {product.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-slate-600 text-sm">
-                      <span className="text-amber-500 shrink-0 mt-0.5">•</span>
+                    <li key={f} className="flex items-start gap-2 text-equipment-text-muted text-sm">
+                      <span className="text-equipment-gold shrink-0 mt-0.5">•</span>
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="/company" className="text-amber-600 font-semibold text-sm hover:text-amber-700 inline-flex items-center gap-1 w-fit">
+                <a href="/company" className="text-equipment-gold font-display uppercase tracking-widest text-xs hover:text-equipment-gold-light inline-flex items-center gap-1 w-fit">
                   Learn more
                   <span aria-hidden>→</span>
                 </a>
@@ -161,7 +160,8 @@ export default function Tech() {
         </div>
       </section>
 
-      <section className="pt-10 md:pt-14 pb-12 md:pb-16 px-4 bg-slate-50 border-t border-slate-200">
+      {/* Industries Section */}
+      <section className="pt-16 md:pt-24 pb-16 md:pb-24 px-4 bg-equipment-black border-t border-white/5">
         <div className={sectionClass}>
           <header data-reveal="up" className="text-center mb-12 md:mb-16">
             <h2 className={sectionTitleClass}>
@@ -177,13 +177,13 @@ export default function Tech() {
                 key={ind.name}
                 data-reveal="up"
                 data-delay={String(i + 1)}
-                className="p-5 rounded-xl bg-white border border-slate-200 hover:border-amber-300/50 hover:shadow-sm transition-all"
+                className="p-6 bg-[#1A1A1A] border border-white/5 hover:border-equipment-gold/20 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center mb-3 shrink-0">
+                <div className="w-10 h-10 bg-equipment-gold/10 flex items-center justify-center mb-4 shrink-0">
                   {ind.icon}
                 </div>
-                <h3 className="font-bold text-slate-800 text-sm md:text-base mb-1.5">{ind.name}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{ind.description}</p>
+                <h3 className="font-display uppercase tracking-wide font-bold text-equipment-text-primary text-sm md:text-base mb-2">{ind.name}</h3>
+                <p className="text-equipment-text-muted text-sm leading-relaxed">{ind.description}</p>
               </div>
             ))}
           </div>

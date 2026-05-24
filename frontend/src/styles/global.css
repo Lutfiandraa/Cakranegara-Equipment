@@ -2,36 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Base ───────────────────────────────────────────── */
 @layer base {
   html {
     @apply scroll-smooth;
   }
   body {
-    @apply antialiased bg-slate-900 text-slate-100;
+    @apply antialiased bg-equipment-black text-equipment-text-primary font-body;
   }
 }
 
+/* ── Reusable button classes ────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply bg-equipment-gold text-black font-display uppercase
+           tracking-widest text-xs px-8 py-4
+           hover:bg-equipment-gold-light transition-all duration-300
+           cursor-pointer inline-block;
+  }
+  .btn-secondary {
+    @apply border border-equipment-gold text-equipment-gold font-display
+           uppercase tracking-widest text-xs px-8 py-4
+           hover:bg-equipment-gold hover:text-black transition-all duration-300
+           cursor-pointer inline-block;
+  }
+}
+
+/* ── View Transitions ───────────────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
 ::view-transition-old(root) {
-  animation: vtFadeOut 0.22s ease-in both;
+  animation: fade-out 0.25s ease-in;
 }
 ::view-transition-new(root) {
-  animation: vtFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-in-page 0.3s ease-out;
 }
 
-@keyframes vtFadeOut {
-  from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.98); }
+@keyframes fade-out {
+  to { opacity: 0; }
 }
-@keyframes vtFadeIn {
-  from { opacity: 0; transform: translateY(14px) scale(0.99); }
-  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+@keyframes fade-in-page {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
+
+/* ── Animation keyframes ────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── data-animate system ────────────────────────────── */
+[data-animate] {
+  opacity: 0;
+}
+
+[data-animate].is-visible {
+  animation: var(--anim, fadeUp) 0.6s ease-out forwards;
+}
+
+[data-animate].is-visible.fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+[data-animate].is-visible.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+[data-animate].is-visible.slide-right {
+  animation: slideRight 0.5s ease-out forwards;
+}
+
+[data-animate][data-delay="100"].is-visible { animation-delay: 0.1s; }
+[data-animate][data-delay="200"].is-visible { animation-delay: 0.2s; }
+[data-animate][data-delay="300"].is-visible { animation-delay: 0.3s; }
+[data-animate][data-delay="400"].is-visible { animation-delay: 0.4s; }
 
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) { animation-duration: 0.08s; }
+  [data-animate] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
 }
 
+/* ── data-reveal system (used by Rent.tsx on /rent page) ── */
 [data-reveal] {
   opacity: 0;
   will-change: opacity, transform;
@@ -66,6 +128,7 @@
   }
 }
 
+/* ── Floating info-box (used by Rent.tsx on /rent page) ── */
 .floating-info-backdrop {
   animation: floatingBackdropIn 0.22s ease-out forwards;
 }
@@ -85,4 +148,17 @@
 @media (prefers-reduced-motion: reduce) {
   .floating-info-backdrop,
   .floating-info-box { animation-duration: 0.1s; }
+}
+
+/* ── Ticker animation ──────────────────────────────── */
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker-scroll 35s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
 }

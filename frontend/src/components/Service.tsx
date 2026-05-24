@@ -3,7 +3,7 @@ export default function Service() {
     {
       id: '1',
       label: 'jual sparepart alat berat',
-      title: 'Penjualan Spare Part Alat Berat',
+      title: 'Penjualan Spare Part Suku Cadang',
       description:
         'Kami menyediakan berbagai macam spare part asli dan suku cadang alat berat lainnya yang terjamin kualitasnya.',
       features: [
@@ -47,23 +47,25 @@ export default function Service() {
   const sectionClass = 'max-w-5xl mx-auto px-4 sm:px-6';
 
   return (
-    <div className="bg-white">
+    <div className="bg-equipment-black">
+      {/* Hero section */}
       <section
         id="1"
-        className="relative flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white px-4 overflow-hidden pt-20 md:pt-24 pb-14 md:pb-20"
+        className="relative flex flex-col items-center justify-center bg-equipment-black text-equipment-text-primary px-4 overflow-hidden pt-36 md:pt-44 pb-16 md:pb-24 min-h-[50vh] md:min-h-[60vh]"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,146,42,0.1)_0%,transparent_70%)]" />
         <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
-          <h1 data-reveal="up" data-delay="1" className="font-brand text-4xl md:text-5xl font-bold mb-3 tracking-tight">
-            Services.
+          <h1 data-reveal="up" data-delay="1" className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-4 uppercase tracking-tight">
+            Services
           </h1>
-          <p data-reveal="up" data-delay="2" className="text-slate-300 text-lg md:text-xl">
-            Cakranegara – Solusi Rental dan Penyediaan Equipment Terpercaya
+          <p data-reveal="up" data-delay="2" className="text-equipment-text-muted text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Solusi Rental, Suku Cadang, dan Pemeliharaan Equipment Terpercaya.
           </p>
         </div>
       </section>
 
-      <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-slate-50">
+      {/* Services List Section */}
+      <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-[#111111] border-t border-white/5">
         <div className={sectionClass}>
           <div className="space-y-16 md:space-y-24">
             {services.map((srv) => (
@@ -71,25 +73,25 @@ export default function Service() {
                 key={srv.id}
                 id={srv.id}
                 data-reveal="up"
-                className="scroll-mt-24 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                className="scroll-mt-24 bg-[#1A1A1A] border border-white/5 hover:border-equipment-gold/20 hover:bg-[#1A1A1A]/80 transition-all duration-300"
               >
-                <div className="p-6 md:p-8 lg:p-10">
-                  <p className="text-amber-500 font-semibold tracking-widest uppercase text-xs mb-3">
+                <div className="p-6 md:p-10 lg:p-12">
+                  <p className="text-equipment-gold font-display uppercase tracking-widest text-xs mb-3">
                     {srv.label}
                   </p>
-                  <h2 className="font-brand text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+                  <h2 className="font-display text-2xl md:text-3xl uppercase font-bold text-equipment-text-primary mb-4">
                     {srv.title}
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-6">{srv.description}</p>
-                  <ul className="space-y-2 mb-6">
+                  <p className="text-equipment-text-muted leading-relaxed mb-6">{srv.description}</p>
+                  <ul className="space-y-2.5 mb-6">
                     {srv.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-slate-600">
-                        <span className="text-amber-500 shrink-0 mt-0.5">•</span>
+                      <li key={f} className="flex items-start gap-2 text-equipment-text-muted">
+                        <span className="text-equipment-gold shrink-0 mt-0.5">•</span>
                         <span>{f}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className="text-slate-600 leading-relaxed">{srv.closing}</p>
+                  <p className="text-equipment-text-muted leading-relaxed border-t border-white/5 pt-4 mt-4">{srv.closing}</p>
                 </div>
               </article>
             ))}
@@ -97,13 +99,14 @@ export default function Service() {
         </div>
       </section>
 
-      <section className="py-6 md:py-8 bg-slate-50">
+      {/* Contact Section */}
+      <section className="py-12 md:py-16 bg-[#111111]">
         <div className={sectionClass}>
           <div className="flex justify-center">
             <a
               data-reveal="up"
               href="/company"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
+              className="btn-primary"
             >
               Hubungi Kami
             </a>

@@ -1,0 +1,59 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Konsultasi',
+    description: 'Hubungi tim kami untuk diskusi kebutuhan proyek dan rekomendasi unit yang tepat.',
+  },
+  {
+    number: '02',
+    title: 'Penawaran & Kontrak',
+    description: 'Dapatkan penawaran transparan. Kami siapkan kontrak sesuai durasi dan kebutuhan Anda.',
+  },
+  {
+    number: '03',
+    title: 'Delivery & Operasi',
+    description: 'Unit dikirim ke lokasi dengan dukungan teknis dan operator berpengalaman.',
+  },
+];
+---
+
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-equipment-black">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="fade-up text-center mb-12 md:mb-16">
+      <p class="font-display uppercase tracking-[0.3em] text-equipment-gold text-xs mb-3">
+        Process
+      </p>
+      <h2 class="font-display font-bold text-equipment-text-primary text-3xl sm:text-4xl md:text-5xl uppercase">
+        How It Works
+      </h2>
+    </div>
+
+    <div class="relative">
+      <div class="hidden md:block absolute top-8 left-[calc(16.67%)] right-[calc(16.67%)] h-px bg-equipment-gold/20" aria-hidden="true"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        {steps.map((step, i) => (
+          <div
+            data-animate
+            data-delay={`${i * 100}`}
+            class="fade-up text-center"
+          >
+            <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-equipment-gold bg-equipment-black mb-6">
+              <span class="font-display font-bold text-equipment-gold text-lg">
+                {step.number}
+              </span>
+            </div>
+
+            <h3 class="font-display font-bold text-equipment-text-primary text-xl uppercase mb-3">
+              {step.title}
+            </h3>
+            <p class="font-body text-equipment-text-muted text-sm leading-relaxed max-w-xs mx-auto">
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
